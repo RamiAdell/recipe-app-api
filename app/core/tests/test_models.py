@@ -1,6 +1,8 @@
 """ test for models """
 from django.test import TestCase
 from django.contrib.auth import get_user_model
+from core import models
+from decimal import Decimal # noqa
 
 
 class ModelTests(TestCase):
@@ -35,3 +37,19 @@ class ModelTests(TestCase):
         user = get_user_model().objects.create_superuser(email, password)
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
+
+    def test_create_recipe(self):
+        user = get_user_model().objects.create_user(
+            'testtest@mail.com',
+            '51648626'
+        )
+
+        recipe = models.Recipe.objects.create(
+            user=user,
+            title='sample title',
+            time_minutes=5,
+            price=Decimal("5.50"),
+            description='asd'
+        )
+
+        self.assertEqual(str(recipe), recipe.title)
