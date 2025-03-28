@@ -7,9 +7,13 @@ from rest_framework.test import APIClient
 from rest_framework import status # noqa
 from core import models # noqa
 from decimal import Decimal
-from recipe.serializers import RecipeSerializer # noqa
+from recipe.serializers import RecipeSerializer, RecipeDetailSerializer # noqa
 
 RECIPES_URL = reverse('recipe:recipe-list')
+
+
+def detail_url(recipe_id):
+    return reverse('recipe:recipe-detail', args=[recipe_id])
 
 
 def create_recipe(user, **params):
@@ -72,3 +76,26 @@ class PrivateRecipeAPITests(TestCase):
         serializer = RecipeSerializer(recipes, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
+
+    def test_get_recipe_detail(self):
+        recipe = create_recipe(user=self.user)
+
+        url = detail_url(recipe.id)
+        res = self.client.get(url)
+
+        serializer = RecipeDetailSerializer(recipe)
+        self.assertEqual(res.data, serializer.data)
+
+    def test_create_recipe(self):
+        payload = {
+            'title': 'Sample Title',
+            'time_minutes': 30,
+            'price': Decimal('5.25'),
+            }
+        res = self.client.post(RECIPES_URL, payload)
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+
+        recipe = Recipe.objects.get(id=res.data['id'])
+        for key, value in payload.items():
+            self.assertEqual(getattr(recipe, key), value)  # recipe.key
+        self.assertEqual(recipe.user, self.user)
