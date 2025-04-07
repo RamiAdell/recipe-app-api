@@ -13,7 +13,7 @@ services:
       - dev-static-data:/vol/web
     command: >
       sh -c "python manage.py wait_for_db &&
-      sh -c python manage.py migrate &&
+      python manage.py migrate &&
       python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
@@ -22,6 +22,16 @@ services:
       - DB_PASS=changeme
     depends_on:
       - db
+    # This is the important addition - initializes the volume every time
+    user: root  # Start as root
+    entrypoint: >
+      sh -c "mkdir -p /vol/web/media/uploads &&
+      mkdir -p /vol/web/static &&
+      chown -R django-user:django-user /vol &&
+      chmod -R 777 /vol/web/media/uploads &&
+      chmod -R 755 /vol/web/static &&
+      su django-user -s /bin/sh -c \"$${@}\"" --
+    # The above drops privileges to django-user after fixing permissions
 
   db:
     image: postgres:13-alpine
