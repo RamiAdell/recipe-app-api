@@ -60,26 +60,12 @@ docker-compose exec app python manage.py migrate
 curl -X GET http://localhost:8000/api/recipe/recipes/ \
   -H "Authorization: Token YOUR_TOKEN"
 ```
-### Project Structure 📂
-
-recipe-app-api/
-├── app/                    # Main application
-│   ├── core/               # Custom auth models
-│   ├── recipe/             # Recipe logic
-│   │   ├── tests/          # 50+ test cases
-│   │   ├── views.py        # ViewSets with OpenAPI params
-│   │   └── serializers.py  # Nested serializers
-├── docker/                 # Nginx configs
-├── .github/workflows/      # CI/CD pipelines
-└── docker-compose.yml      # 3-service setup
-
-
 
 ### Testing Approach ✔️
-## Test Coverage: 100% for critical paths
-## Test Types:
+Test Coverage: 100% for critical paths
+Test Types:
 
-Model validation (Recipe, Tag, Ingredient)
-API endpoints (CRUD + filtering)
-Authentication flows
-Image upload validation
+- Model validation (Recipe, Tag, Ingredient)
+- API endpoints (CRUD + filtering)
+- Authentication flows
+- Image upload validation
