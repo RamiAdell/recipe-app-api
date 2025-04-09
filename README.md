@@ -17,7 +17,7 @@ A production-ready Django REST Framework API for recipe management with secure a
 - **Comprehensive Documentation**: Auto-generated OpenAPI 3.0 docs with `drf-spectacular`
 - **Robust Testing**: 100% test coverage with Django TestCase
 
-## API Endpoints 📍
+## API Endpoints 📍 
 
 | Endpoint                          | Method | Description                          | Auth Required |
 |-----------------------------------|--------|--------------------------------------|---------------|
