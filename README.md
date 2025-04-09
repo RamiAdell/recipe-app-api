@@ -2,7 +2,7 @@
 
 A production-ready Django REST Framework API for recipe management with secure authentication, advanced filtering, and comprehensive documentation.
 
-[![CI/CD](https://github.com/RamiAdell/recipe-api/actions/workflows/main.yml/badge.svg)](https://github.com/RamiAdell/recipe-api/actions)
+[![CI/CD](https://github.com/RamiAdell/recipe-app-api/actions/workflows/main.yml/badge.svg)](https://github.com/RamiAdell/recipe-app-api/actions)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)](https://docs.docker.com/)
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-brightgreen?logo=openapi-initiative)](https://swagger.io/specification/)
 
@@ -48,8 +48,8 @@ A production-ready Django REST Framework API for recipe management with secure a
 
 ```bash
 # Clone and run with Docker
-git clone https://github.com/RamiAdell/recipe-api.git
-cd recipe-api
+git clone https://github.com/RamiAdell/recipe-app-api.git
+cd recipe-app-api
 docker-compose up -d
 
 # Apply migrations
@@ -61,7 +61,7 @@ curl -X GET http://localhost:8000/api/recipe/recipes/ \
 ```
 ### Project Structure 📂
 Copy
-recipe-api/
+recipe-app-api/
 ├── app/
 │   ├── core/               # Custom auth models
 │   ├── recipe/             # Recipe logic
