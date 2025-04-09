@@ -3,7 +3,8 @@
 A production-ready Django REST Framework API for recipe management with secure authentication, advanced filtering, and comprehensive documentation.
 
 [![CI/CD](https://github.com/RamiAdell/recipe-app-api/actions/workflows/main.yml/badge.svg)](https://github.com/RamiAdell/recipe-app-api/actions)
-[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)](https://docs.docker.com/)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker)]
+(https://docs.docker.com/)
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-3.0-brightgreen?logo=openapi-initiative)](https://swagger.io/specification/)
 
 ## Features ✨
