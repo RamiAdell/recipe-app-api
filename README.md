@@ -61,9 +61,9 @@ curl -X GET http://localhost:8000/api/recipe/recipes/ \
   -H "Authorization: Token YOUR_TOKEN"
 ```
 ### Project Structure 📂
-Copy
+
 recipe-app-api/
-├── app/
+├── app/                    # Main application
 │   ├── core/               # Custom auth models
 │   ├── recipe/             # Recipe logic
 │   │   ├── tests/          # 50+ test cases
@@ -72,6 +72,7 @@ recipe-app-api/
 ├── docker/                 # Nginx configs
 ├── .github/workflows/      # CI/CD pipelines
 └── docker-compose.yml      # 3-service setup
+
 
 
 ### Testing Approach ✔️
